@@ -48,7 +48,6 @@ function display_addr_info(){
 
 $(document).ready(function (){
 	$('#btn-submit-addr').on('click',function (){
-
 		/* Validation for address field */
 		if($('#xlm_addr').val()==""){
 			alert("Please enter your XLM address.");
@@ -73,4 +72,9 @@ $(document).ready(function (){
 			alert("This address has not voted to any inflation pool.\nPlease refer to http://xlmpool.com/en.html.");
 		}
 	});
+	
+	if($('#xlm_addr').val()!=""){
+		/* If xlm address is already pre-defined, submit address */
+		$('#btn-submit-addr').click();
+	}
 });

@@ -62,7 +62,7 @@
             <p class="lead">
               <form onsubmit="submit_address(); return false;">
               <div class="input-group mb-3" id="input_addr_group">
-                <input type="text" id="xlm_addr" class="form-control alert-dark" href="#" placeholder="Your public key. DO NOT GIVE YOUR SECRET KEY." aria-label="Your public key" aria-describedby="basic-addon2" value="">
+                <input type="text" id="xlm_addr" class="form-control alert-dark" href="#" placeholder="Your public key. DO NOT GIVE YOUR SECRET KEY." aria-label="Your public key" aria-describedby="basic-addon2" value="<?php if(isset($_GET['pk'])){ echo $_GET['pk']; } ?>">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary alert-light" id="btn-submit-addr" type="button">GO!</button>
                 </div>
