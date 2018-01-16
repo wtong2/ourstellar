@@ -234,7 +234,7 @@
       /*
       Add all inflation pool address here.
       */
-      var inflation_addresses = ["GA3FUYFOPWZ25YXTCA73RK2UGONHCO27OHQRSGV3VCE67UEPEFEDCOPA"];
+      var inflation_addresses = ["GA3FUYFOPWZ25YXTCA73RK2UGONHCO27OHQRSGV3VCE67UEPEFEDCOPA","GCCD6AJOYZCUAQLX32ZJF2MKFFAUJ53PVCFQI3RHWKL3V47QYE2BNAUT"];
     </script>
     <script src="./resource/js/bootstrap/popper.min.js"></script>
     <script src="./resource/js/bootstrap/bootstrap.min.js"></script>
