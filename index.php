@@ -22,8 +22,6 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="OurStellar">
     <link rel="icon" href="./resource/favicon.ico">
-
-    <link rel="icon" href="./resource/favicon.ico">
     <link rel="apple-touch-icon" href="./resource/favicon.ico">
     <link rel="apple-touch-startup-image" href="./resource/favicon.ico">
     <title>OurStellar</title>
@@ -60,9 +58,9 @@
             <h2 class="cover-heading">Your Stellar Wallet</h2>
             <h5><small class="text-muted">Wallet of truth.</small></h5>
             <p class="lead">
-              <form onsubmit="submit_address(); return false;">
+              <form id="form_xlm_addr">
               <div class="input-group mb-3" id="input_addr_group">
-                <input type="text" id="xlm_addr" class="form-control alert-dark" href="#" placeholder="Your public key. DO NOT GIVE YOUR SECRET KEY." aria-label="Your public key" aria-describedby="basic-addon2" value="">
+                <input type="text" id="xlm_addr" class="form-control alert-dark" href="#" placeholder="Your public key. DO NOT GIVE YOUR SECRET KEY." aria-label="Your public key" aria-describedby="basic-addon2" value="<?php if(isset($_GET['pk'])){ echo $_GET['pk']; } ?>">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary alert-light" id="btn-submit-addr" type="button">GO!</button>
                 </div>
@@ -225,7 +223,7 @@
     <script>window.jQuery || document.write('<script src="./resource/js/jquery/jquery-3.2.1.min.js"><\/script>')</script>
     <script>
       var xlm_usd = 0;
-      var xlm_usd_ori = 0;
+      var xlm_usd_24hr = 0;
       var boo_alert_xlm_usd = false;
       var xlm = 0;
       var valid_address = 0;
@@ -234,7 +232,7 @@
       /*
       Add all inflation pool address here.
       */
-      var inflation_addresses = ["GA3FUYFOPWZ25YXTCA73RK2UGONHCO27OHQRSGV3VCE67UEPEFEDCOPA"];
+      var inflation_addresses = ["GA3FUYFOPWZ25YXTCA73RK2UGONHCO27OHQRSGV3VCE67UEPEFEDCOPA","GCCD6AJOYZCUAQLX32ZJF2MKFFAUJ53PVCFQI3RHWKL3V47QYE2BNAUT"];
     </script>
     <script src="./resource/js/bootstrap/popper.min.js"></script>
     <script src="./resource/js/bootstrap/bootstrap.min.js"></script>

@@ -46,16 +46,26 @@ function display_addr_info(){
 	update_addr_balance();
 }
 
+function form_xlm_addr_submit(){
+	/* Validation for address field */
+	if($('#xlm_addr').val()==""){
+		alert("Please enter your XLM address.");
+	}else{
+		window.location.replace("/?pk="+$('#xlm_addr').val());
+	}
+}
+
 $(document).ready(function (){
 	$('#btn-submit-addr').on('click',function (){
+		/* button to submit address */
+		form_xlm_addr_submit();
+		return false;
+	});
 
-		/* Validation for address field */
-		if($('#xlm_addr').val()==""){
-			alert("Please enter your XLM address.");
-			return;
-		}else {
-			setInterval(submit_address(), 60000);
-		}
+	$('#form_xlm_addr').on('submit',function (){
+		/* form submission for address */
+		form_xlm_addr_submit();
+		return false;
 	});
 
 	$('#btn_transactions').on('click',function (){
@@ -65,7 +75,6 @@ $(document).ready(function (){
 
 	$('#btn_inflations').on('click',function (){
 		/* Get account operations */
-
 		if(inflation_address!=""){
 			get_account_operations();
 			$('#modal_inflations').modal('show');
@@ -73,4 +82,9 @@ $(document).ready(function (){
 			alert("This address has not voted to any inflation pool.\nPlease refer to http://xlmpool.com/en.html.");
 		}
 	});
+	
+	if($('#xlm_addr').val()!=""){
+		/* Using pre-defined xlm address in url, submit address */
+		submit_address();
+	}
 });
