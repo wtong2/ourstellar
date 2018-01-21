@@ -79,7 +79,7 @@ $(document).ready(function (){
 			get_account_operations();
 			$('#modal_inflations').modal('show');
 		}else{
-			alert("This address has not voted to any inflation pool.\nPlease refer to http://xlmpool.com/en.html.");
+			alert("This address has not voted to any inflation pool.\nPlease refer to https://lumenaut.net.");
 		}
 	});
 	
