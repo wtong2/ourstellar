@@ -40,7 +40,7 @@ function get_account_operations(){
 			var operation = [];
 
 			/* store operation details in array */
-			if(data._embedded.records[i].type=="payment" && ($.inArray(data._embedded.records[i].from,inflation_addresses)==-1) || data._embedded.records[i].from==$('#xlm_addr').val()){
+			if(data._embedded.records[i].type=="payment" && data._embedded.records[i].asset_type=="native" && ($.inArray(data._embedded.records[i].from,inflation_addresses)==-1) || data._embedded.records[i].from==$('#xlm_addr').val()){
 				/* Is a payment and (From address is not from inflation pool/From address is own address as it counts as its own transaction) */
 				operation["time"] = new Date(data._embedded.records[i].created_at);
 				operation["type"] = data._embedded.records[i].type;
@@ -48,7 +48,7 @@ function get_account_operations(){
 				operation["source"] = data._embedded.records[i].from;
 				operation["destination"] = data._embedded.records[i].to;
 				operation["transaction_hash"] = data._embedded.records[i].transaction_hash;
-			}else if(data._embedded.records[i].type=="payment" && ($.inArray(data._embedded.records[i].from,inflation_addresses)!=-1) && data._embedded.records[i].from!==$('#xlm_addr').val()){
+			}else if(data._embedded.records[i].type=="payment" && data._embedded.records[i].asset_type=="native" && ($.inArray(data._embedded.records[i].from,inflation_addresses)!=-1) && data._embedded.records[i].from!==$('#xlm_addr').val()){
 				/* Is a payment and (From address is from inflation pool and From address should not be own address as it counts as its own transaction) */
 				operation["time"] = new Date(data._embedded.records[i].created_at);
 				operation["type"] = "inflation";
@@ -95,7 +95,7 @@ function display_operation(operation){
 	}
 	var div_card = $('<div>').addClass('card');
 	var div_card_body = $('<div>').addClass('card-body');
-	var h5_amount = $('<h5>').addClass('card-title text-left').html(amount_sign + numeral(operation["amount"]).format('0,0.0000000') + " XLMs (" + amount_sign + "$" + numeral(operation["amount"] * xlm_usd).format('0,0.00') + ")");
+	var h5_amount = $('<h5>').addClass('card-title text-left').html(amount_sign + numeral(operation["amount"]).format('0,0.[0000000]') + " XLMs (" + amount_sign + "$" + numeral(operation["amount"] * xlm_usd).format('0,0.00') + ")");
 	var p_party_address = $('<p>').addClass('small card-text text-muted text-center').html(party_address);
 	var p_date_time = $('<p>').addClass('small card-text text-muted text-right').html(operation["time"]);
 

@@ -12,7 +12,7 @@ function get_xlm_addr_info(){
 		.done(function(data) {
 			/* set address as valid and set address balance */
 			valid_address = 1;
-			xlm = data.balances[0].balance;
+			xlm = get_address_xlm_balance(data.balances);
 
 			/* set inflation address */
 			if(data.inflation_destination) inflation_address = data.inflation_destination;
@@ -24,6 +24,18 @@ function get_xlm_addr_info(){
 			valid_address = 0;
 			console.log("An error has occurred - Failed to get address info from Stellar network.");
 		});
+}
+
+function get_address_xlm_balance(balances){
+	var xlm_balance = 0;
+
+	for(var i=0;i<balances.length;i++){
+		if(balances[i].asset_type="native"){
+			xlm_balance = balances[i].balance;
+		}
+	}
+	
+	return xlm_balance;
 }
 
 function submit_address(){
